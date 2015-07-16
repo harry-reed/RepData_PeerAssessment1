@@ -59,7 +59,7 @@ hist(
             breaks=21,
             xlab="Daily Total Steps",
             ylab="# Days Observed",
-            main="Distribution: Total Steps Per Day (NA data ignored)"
+            main="Hist: Total Number Steps Taken Each Day (NA data ignored)"
       )
 
 ```
@@ -73,7 +73,7 @@ dayStepSumMedian_NoNA <- as.integer(median(dayStepSum_NoNA))
 
 ```
 
-MEAN and MEDIAN of Total Steps Per Day Distribution (ignoring NAs):  mean = `r dayStepSumMean_NoNA` and median = `r dayStepSumMedian_NoNA`.
+MEAN and MEDIAN of Total Number of Steps Taken Each Day (ignoring NAs):  mean = `r dayStepSumMean_NoNA` and median = `r dayStepSumMedian_NoNA`.
 
 ## What is the average daily activity pattern?
 
@@ -90,8 +90,8 @@ with(df_AIA_NoNA,
           avg,
           type="l",
           xlab="Five Min Intervals",
-          ylab="Average Interval Steps",
-          main="Plot of Avg Interval Steps Across All Days (NAs Ignored)"))
+          ylab="Average Number of Steps Taken",
+          main="Plot: Avg Number of Steps Taken Across All Days (NAs Ignored)"))
 
 ```
 
@@ -104,7 +104,7 @@ ans <- df_AIA_NoNA[df_AIA_NoNA$avg == maxSteps_NoNA, ]
 
 ```
 
-The interval `r ans$interval` with value `r ans$avg` is the maximum observed (dataset ignoring NAs).
+The 5-minute interval `r ans$interval` with value `r ans$avg` contained the maximum number of steps taken (dataset ignoring NAs).
 
 ## Imputing missing values
 
@@ -118,7 +118,7 @@ actData_NumNA <- sum(is.na(actData$steps))
 
 Total number of missing values in dataset is `r actData_NumNA`.
 
-We will use a simple strategy for filling in dataset missing values in the dataset: If 5-minute interval has missing value then we substitute the mean for that 5-minute interval across all days.
+STRATEGY FOR IMPUTING MISSING DATA: We will use a simple strategy for filling in dataset missing values in the dataset: If 5-minute interval has missing value then we substitute the mean for that 5-minute interval across all days.
 
 Create the new dataframe with missing values filled in using the simple strategy above.
 
@@ -149,7 +149,7 @@ hist(
             breaks=21,
             xlab="Daily Total Steps",
             ylab="# Days Observed",
-            main="Distribution: Total Steps Per Day (NA values imputed)"
+            main="Hist: Total Number of Steps Taken Each Day (NA values imputed)"
       )
 
 ```
@@ -163,7 +163,7 @@ dayStepSumMedian_Imputed <- as.integer(median(dayStepSum_Imputed))
 
 ```
 
-MEAN and MEDIAN of Total Steps Per Day Distribution (with imputed NAs):  mean = `r dayStepSumMean_Imputed` and median = `r dayStepSumMedian_Imputed`.
+MEAN and MEDIAN of Total Number of Steps Taken Each Day (with imputed NAs):  mean = `r dayStepSumMean_Imputed` and median = `r dayStepSumMedian_Imputed`.
 
 Recalling the mean of the UN-Imputed Dataset = `r dayStepSumMean_NoNA` and the median of the UN-Imputed Dataset = `r dayStepSumMedian_NoNA` ... the mean does not change and the median has a small change. Also, the new imputed median becomes identical to the mean.
 
@@ -191,8 +191,9 @@ intByWeek <- aggregate(steps ~ timeframe+interval, data=actData_Imputed, FUN=mea
 library(lattice)
 xyplot(steps ~ interval | timeframe,
        layout = c(1, 2),
-       xlab="Interval",
-       ylab="Number of steps",
+       xlab="5 Minute Interval",
+       ylab="Avg Number of Steps Taken",
+       main="Avg Num Steps Taken per 5-Min Int Across Weekdays & Weekends",
        type="l",
        lty=1,
        horizontal=FALSE,
