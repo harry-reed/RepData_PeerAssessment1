@@ -107,7 +107,7 @@ dayStepSumMean_NoNA <- as.integer(mean(dayStepSum_NoNA))
 dayStepSumMedian_NoNA <- as.integer(median(dayStepSum_NoNA))
 ```
 
-MEAN and MEDIAN of Total Number of Steps Taken Each Day (ignoring NAs):  mean = 10766 and median = 10765.
+<u>MEAN and MEDIAN of Total Number of Steps Taken Each Day (ignoring NAs):  mean = 10766 and median = 10765.</u>
 
 ## What is the average daily activity pattern?
 
@@ -136,9 +136,10 @@ Calculate and report which 5-minute interval on average across all the days in t
 ```r
 maxSteps_NoNA <- max(df_AIA_NoNA$avg)
 ans <- df_AIA_NoNA[df_AIA_NoNA$avg == maxSteps_NoNA, ]
+av_ans <- as.integer(ans$avg)
 ```
 
-The 5-minute interval 835 with value 206.1698113 contained the maximum number of steps taken (dataset ignoring NAs).
+<u>The 5-min interval 835 with value 206 contained the max number of steps taken (ignoring NAs).</u>
 
 ## Imputing missing values
 
@@ -151,7 +152,7 @@ actData_NumNA <- sum(is.na(actData$steps))
 
 Total number of missing values in dataset is 2304.
 
-STRATEGY FOR IMPUTING MISSING DATA: We will use a simple strategy for filling in dataset missing values in the dataset: If 5-minute interval has missing value then we substitute the mean for that 5-minute interval across all days.
+<u>STRATEGY FOR IMPUTING MISSING DATA: We will use a simple strategy for filling in dataset missing values in the dataset: If 5-minute interval has missing value then we substitute the mean for that 5-minute interval across all days.</u>
 
 Create the new dataframe with missing values filled in using the simple strategy above.
 
@@ -195,7 +196,7 @@ dayStepSumMean_Imputed <- as.integer(mean(dayStepSum_Imputed))
 dayStepSumMedian_Imputed <- as.integer(median(dayStepSum_Imputed))
 ```
 
-MEAN and MEDIAN of Total Number of Steps Taken Each Day (with imputed NAs):  mean = 10766 and median = 10766.
+<u>MEAN and MEDIAN of Total Number of Steps Taken Each Day (with imputed NAs):  mean = 10766 and median = 10766.</u>
 
 Recalling the mean of the UN-Imputed Dataset = 10766 and the median of the UN-Imputed Dataset = 10765 ... the mean does not change and the median has a small change. Also, the new imputed median becomes identical to the mean.
 
