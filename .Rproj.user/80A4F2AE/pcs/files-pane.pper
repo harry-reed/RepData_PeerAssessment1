@@ -1,0 +1,13 @@
+{
+    "path" : "~/GitHub/Ass1ReprodResh/RepData_PeerAssessment1/activity",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        },
+        {
+            "ascending" : false,
+            "columnIndex" : 1
+        }
+    ]
+}
